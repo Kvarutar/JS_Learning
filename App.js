@@ -66,6 +66,17 @@ let appDate =
     },
     chooseIncome: function() {
         let items = prompt("Что принесет доход? (перечислете через запятую)", "");
-        appDate.income = items.split(", ");
+        if (typeof(items) === "string" && items != '' && items != null){
+            appDate.income = items.split(", ");
+            appDate.income.push(prompt("Может что-то еще?"));
+            appDate.income.sort();
+        }
+        appDate.income.forEach(function(item, i, mass) {
+            alert("Способы доп заработка:" + (i+1) + "-" + item);
+        });
     }
 };
+
+for(let key in appDate){
+    console.log("Наша программа включает в себя данные: " + key);
+}
